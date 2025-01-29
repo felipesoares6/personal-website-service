@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Copy config directory first
-COPY config ./config
-
 # Install dependencies
 RUN npm install
 
@@ -19,8 +16,8 @@ COPY . .
 # Install TypeScript globally
 RUN npm install -g typescript
 
-# Compile TypeScript to JavaScript
-RUN npx tsc
+# Compile TypeScript (uses the "build" script from package.json)
+RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3000
@@ -29,4 +26,4 @@ EXPOSE 3000
 ENV DATABASE_URL=${DATABASE_URL}
 
 # Start the app using the compiled JavaScript file
-CMD ["node", "dist/server.js"]
+CMD ["node", "dist/src/server.js"]

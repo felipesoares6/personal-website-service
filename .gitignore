@@ -17,3 +17,5 @@ docker-compose.override.yml
 
 volumes/
 pgdata/
+
+dist/

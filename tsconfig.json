@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2024", // JavaScript version to output
-    "module": "commonjs", // Use CommonJS for Node.js
-    "strict": true, // Enable all strict type-checking options
-    "esModuleInterop": true, // Allow default imports from non-ES modules
-    "skipLibCheck": true, // Skip type-checking of declaration files
+    "target": "ES2024",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist", // Directory for compiled files
-    "rootDir": "./src", // Directory for source files
-    "baseUrl": ".", // Base directory for relative imports
-    "resolveJsonModule": true
+    "paths": {
+      "*": ["node_modules/*"]
+    }
   },
-  "include": ["src/**/*.ts", "db/**/*.js", "db/models/index.ts"], // Include all TypeScript files in the src folder
-  "exclude": ["node_modules"] // Exclude node_modules
+  "include": ["src", "db"],
+  "exclude": ["node_modules", "dist"]
 }
