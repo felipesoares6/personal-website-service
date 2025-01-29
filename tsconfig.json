@@ -11,6 +11,6 @@
     "baseUrl": ".", // Base directory for relative imports
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "db/**/*.js"], // Include all TypeScript files in the src folder
+  "include": ["src/**/*.ts", "db/**/*.js", "db/models/index.ts"], // Include all TypeScript files in the src folder
   "exclude": ["node_modules"] // Exclude node_modules
 }

@@ -1,33 +1,16 @@
-import Fastify, { FastifyInstance, RouteShorthandOptions } from "fastify";
+import Fastify, { FastifyInstance } from "fastify";
+import workExperienceRoutes from "./routes/work-experience.route";
 
 const server: FastifyInstance = Fastify({});
 
-const opts: RouteShorthandOptions = {
-  schema: {
-    response: {
-      200: {
-        type: "object",
-        properties: {
-          pong: {
-            type: "string",
-          },
-        },
-      },
-    },
-  },
-};
-
-server.get("/ping", opts, async (request, reply) => {
-  return { pong: "it worked!" };
-});
+// Register routes
+server.register(workExperienceRoutes);
 
 const start = async () => {
   try {
     await server.listen({ port: 3000, host: "0.0.0.0" });
-
     const address = server.server.address();
     console.log("Service is running on port", address);
-    const port = typeof address === "string" ? address : address?.port;
   } catch (err) {
     console.log("error", err);
     server.log.error(err);
