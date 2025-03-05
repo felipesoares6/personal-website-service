@@ -1,7 +1,13 @@
 import Fastify, { FastifyInstance } from "fastify";
+import cors from "@fastify/cors";
 import workExperienceRoutes from "./routes/work-experience.route";
 
 const server: FastifyInstance = Fastify({});
+
+// server.register(cors, {
+//   origin: "http://localhost:5173", // Allow frontend domain
+//   credentials: true, // Allow cookies
+// });
 
 // Register routes
 server.register(workExperienceRoutes);
